@@ -6,10 +6,18 @@
 </head>
 <body>
 
+
+<div id="conf"></div>
+<button id='nextConfession'>Show another confession</button>
+
+<br><br><br>
+
 <form action="/confession" method="POST">
 	<input id="confession" type="text" placeholder="Confess Here..." name="confession">
 	<button type="submit">Confess</button>
 </form>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/2.3.0/superagent.min.js"></script>
+<script src="/scripts.js"></script>
 </body>
 </html>
