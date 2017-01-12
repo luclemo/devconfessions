@@ -2,9 +2,12 @@
 
 const bodyParser = require('body-parser');
 const express = require('express');
+const superagent = require('superagent');
 const app = express();
+	
 var MongoClient = require('mongodb').MongoClient;
 
+app.use(express.static( __dirname + '/'))
 app.use(bodyParser.urlencoded({extended: true}))
 
 var url = 'mongodb://localhost:27017/devconfessions';
@@ -28,19 +31,6 @@ MongoClient.connect(url, function(err, db) {
 			res.json(confessionsArray);
 		});
 	});
-
-	// Get random approved confession from db using aggregate
-	// app.get('/confession', (req, res) => {
-	// 	db.collection('confessions').aggregate([{'$sample': {'size': 1 }}, {status:''}], function(err, item) {
-	// 		if (err) {
-	// 			return res.status(500).json({
-	// 				error: err.message
-	// 			});
-	// 		}
-	// 		res.json(item);
-	// 	});
-	// });
-	// 
 
 	// add confession
 	app.post('/confession', (req, res) => {
